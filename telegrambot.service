@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram Bot (yourrepo)
+After=network.target
+
+[Service]
+Type=simple
+User=youruser
+WorkingDirectory=/home/youruser/yourrepo
+Environment=PYTHONUNBUFFERED=1
+# Option A: load env file (if you used python-dotenv this is optional)
+EnvironmentFile=/home/youruser/yourrepo/.env
+ExecStart=/home/youruser/yourrepo/venv/bin/python /home/youruser/yourrepo/run.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
